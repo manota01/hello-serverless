@@ -27,39 +27,10 @@ resource "aws_iam_role" "lambda_role" {
   })
 }
 
-# IAM policy for Parameter Store access
-resource "aws_iam_policy" "lambda_ssm_policy" {
-  name        = "${local.name_prefix}-lambda-ssm"
-  description = "Allow Lambda to read API key from Parameter Store"
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "ssm:GetParameter"
-        ]
-        Resource = [
-          aws_ssm_parameter.api_key.arn
-        ]
-      }
-    ]
-  })
-
-  tags = var.common_tags
-}
-
 # Attach basic execution policy
 resource "aws_iam_role_policy_attachment" "lambda_basic" {
   role       = aws_iam_role.lambda_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
-}
-
-# Attach Parameter Store policy
-resource "aws_iam_role_policy_attachment" "lambda_ssm" {
-  role       = aws_iam_role.lambda_role.name
-  policy_arn = aws_iam_policy.lambda_ssm_policy.arn
 }
 
 # Lambda function
@@ -86,7 +57,6 @@ resource "aws_lambda_function" "app" {
 
   depends_on = [
     aws_iam_role_policy_attachment.lambda_basic,
-    aws_iam_role_policy_attachment.lambda_ssm,
     aws_cloudwatch_log_group.lambda_logs
   ]
 }

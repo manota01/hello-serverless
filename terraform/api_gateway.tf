@@ -38,4 +38,13 @@ resource "aws_apigatewayv2_route" "default" {
   target    = "integrations/${aws_apigatewayv2_integration.lambda.id}"
 }
 
-# Stage is defined in security.tf with throttling 
+# API Gateway stage (using $default for clean URLs)
+resource "aws_apigatewayv2_stage" "main" {
+  api_id      = aws_apigatewayv2_api.main.id
+  name        = "$default"
+  auto_deploy = true
+
+  tags = merge(var.common_tags, {
+    Name = "${local.name_prefix}-api-stage"
+  })
+} 
