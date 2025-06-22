@@ -4,7 +4,7 @@ output "application_url" {
 }
 
 output "hello_endpoint" {
-  description = "Hello endpoint URL (requires X-API-Key header)"
+  description = "Hello endpoint URL (public)"
   value       = "${aws_apigatewayv2_api.main.api_endpoint}/hello"
 }
 
@@ -13,19 +13,16 @@ output "health_endpoint" {
   value       = "${aws_apigatewayv2_api.main.api_endpoint}/health"
 }
 
-output "api_key" {
-  description = "API key for accessing protected endpoints"
-  value       = random_password.api_key.result
-  sensitive   = true
-}
-
-output "security_summary" {
-  description = "Security configuration summary"
+output "application_summary" {
+  description = "Application deployment summary"
   value = {
-    waf_enabled = "Yes - blocks common attacks and rate limits"
-    api_key_protection = "/hello endpoint requires X-API-Key header"
-    rate_limiting = "2000 requests per 5 minutes per IP"
-    throttling = "100 requests per second"
-    security_headers = "Applied to all responses"
+    architecture = "Serverless (Lambda + API Gateway)"
+    endpoints = {
+      hello = "GET /hello → Returns 'OK'"
+      health = "GET /health → Returns health status"
+      root = "GET / → Returns API information"
+    }
+    cost_estimate = "$1.11/month for 1M requests"
+    region = data.aws_region.current.name
   }
 }

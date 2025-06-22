@@ -1,7 +1,7 @@
 # Cost Analysis - HelloHexa DevOps Test
 
 ## Summary
-**Total Monthly Cost: $6.71 USD** for 1 million requests per month in ap-southeast-2 (Sydney).
+**Total Monthly Cost: $1.11 USD** for 1 million requests per month in ap-southeast-2 (Sydney).
 
 ## Cost Breakdown
 
@@ -9,35 +9,50 @@
 |---------|-----------|--------------|---------|
 | **Lambda** | Function execution | $0.10 | 1M requests, 128MB, 50ms avg |
 | **API Gateway** | HTTP API requests | $1.00 | 1M requests |
-| **WAF** | Security protection | $5.60 | Web ACL + 3 rules + processing |
-| **Parameter Store** | API key storage | $0.00 | Free tier |
-| **CloudWatch** | Logs & monitoring | $0.01 | 7-day retention |
-| | **TOTAL** | **$6.71** | |
+| **CloudWatch** | Logs & monitoring | $0.01 | Basic logging |
+| | **TOTAL** | **$1.11** | |
 
-## Security vs Basic Comparison
+## Serverless vs Traditional Comparison
 
-| Architecture | Lambda | API Gateway | WAF | Total |
-|--------------|--------|-------------|-----|-------|
-| **Basic (no security)** | $0.10 | $1.00 | $0.00 | $1.11 |
-| **Secured (current)** | $0.10 | $1.00 | $5.60 | $6.71 |
-| **Security premium** | - | - | +$5.60 | +$5.60 |
+| Architecture | Monthly Cost | Annual Cost | Key Benefits |
+|--------------|-------------|-------------|---------------|
+| **Serverless (current)** | $1.11 | $13.32 | No idle costs, auto-scaling |
+| **Container (ECS Fargate)** | $140.00 | $1,680.00 | Always running, fixed capacity |
+| **EC2 Instance (t3.micro)** | $8.76 | $105.12 | Server management required |
+
+**Serverless Savings**: 92% cheaper than containers, 87% cheaper than EC2
 
 ## Scaling Projections
 
-| Monthly Requests | Total Cost | Cost per Request |
-|------------------|------------|------------------|
-| 1M | $6.71 | $0.00671 |
-| 10M | $22.00 | $0.0022 |
-| 100M | $175.00 | $0.00175 |
+| Monthly Requests | Lambda | API Gateway | CloudWatch | Total | Cost/Request |
+|------------------|--------|-------------|------------|-------|--------------|
+| 1M | $0.10 | $1.00 | $0.01 | $1.11 | $0.00111 |
+| 10M | $1.00 | $10.00 | $0.05 | $11.05 | $0.001105 |
+| 100M | $10.00 | $100.00 | $0.50 | $110.50 | $0.001105 |
 
-## Free Tier Savings (First 12 months)
+## Free Tier Benefits (First 12 months)
 
 | Service | Free Allowance | Estimated Savings |
 |---------|----------------|-------------------|
 | Lambda | 1M requests + 400K GB-seconds | $0.10/month |
-| Parameter Store | 10K parameters + API calls | $0.00/month |
 | CloudWatch | 10 metrics, 10K API requests | $0.01/month |
 | **Total Savings** | | **$0.11/month** |
 
+**Effective Cost with Free Tier**: $1.00/month for first year
+
+## Cost Optimization Features
+
+✅ **Pay-per-use**: No charges when not processing requests  
+✅ **Auto-scaling**: No over-provisioning costs  
+✅ **No infrastructure**: No server, load balancer, or NAT gateway costs  
+✅ **Efficient runtime**: Optimized Node.js Lambda function  
+
+## Break-even Analysis
+
+**When serverless becomes expensive:**
+- Above ~50M requests/month, consider containers
+- Above ~100M requests/month, dedicated infrastructure may be cheaper
+- Current implementation optimal for most web applications
+
 ---
-*Pricing based on ap-southeast-2 region, December 2024* 
+*Pricing based on ap-southeast-2 region, updated December 2024*
