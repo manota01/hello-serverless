@@ -1,19 +1,6 @@
 // AWS Lambda handler for HelloHexa DevOps Test
 
-// For Node.js 18, AWS SDK is not included by default
-// Using a simple implementation without AWS SDK for now
-let cachedApiKey = 'hx-dev-2024-secure-api-key-abc123xyz'; // Simplified for demo
-let cacheExpiry = 0;
-
-// Simplified API key validation (demo version)
-const validateApiKey = async (providedKey) => {
-    if (!providedKey) {
-        return false;
-    }
-    
-    // For demo: validate against the hardcoded key
-    return providedKey === cachedApiKey;
-};
+// Simple serverless web application handler
 
 exports.handler = async (event) => {
     // Log the request for monitoring
