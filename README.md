@@ -1,4 +1,4 @@
-# HelloHexa DevOps Test
+# HelloHexa DevOps
 
 Simple serverless web application deployed to AWS ap-southeast-2 (Sydney).
 
@@ -43,15 +43,58 @@ graph TD
 ## 🛠️ Quick Deploy
 
 ### Prerequisites
-- AWS CLI configured (`aws configure`)
-- Terraform installed
+
+#### Required Software
+- **Docker** - [Installation Guide](https://docs.docker.com/get-docker/)
+- **Docker Compose** - Usually included with Docker Desktop
+
+#### AWS Account Setup
+1. **AWS Account** with appropriate permissions:
+   ```
+   - AWSLambda Access
+   - AmazonAPIGatewayInvoke Access
+   - AmazonAPIGatewayAdministrator
+   - CloudWatchLogsFullAccess
+   - IAM Access (for creating Lambda execution role)
+   ```
+
+2. **AWS CLI Configuration** (on your local machine):
+   ```bash
+   aws configure
+   # Enter your AWS Access Key ID
+   # Enter your AWS Secret Access Key
+   # Default region: ap-southeast-2
+   # Default output format: json
+   ```
+
+**Note**: All other tools (AWS CLI, Terraform, Node.js) are included in the Docker container!
 
 ### Deploy
-```bash
-cd terraform
-terraform init
-terraform apply
-```
+
+#### Step-by-Step Deployment
+
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd hellohexa
+   ```
+
+2. **Configure AWS Credentials** (one-time setup):
+   ```bash
+   aws configure
+   # Enter your AWS credentials
+   ```
+
+3. **Deploy with Docker** (one command!):
+   ```bash
+   ./scripts/deploy-docker.sh
+   ```
+
+That's it! The Docker container handles:
+- ✅ AWS CLI installation and configuration
+- ✅ Terraform installation and initialization  
+- ✅ Infrastructure deployment
+- ✅ Lambda function packaging and deployment
 
 ### Test
 ```bash
@@ -69,8 +112,32 @@ curl https://snp07vtku6.execute-api.ap-southeast-2.amazonaws.com/
 
 ### Cleanup
 ```bash
-terraform destroy
+./scripts/destroy-docker.sh
 ```
+
+## 🔧 Deployment Troubleshooting
+
+### Common Issues
+
+#### 1. AWS Credentials Not Configured  
+**Error**: `Unable to locate credentials`  
+**Solution**: Run `aws configure` and enter your AWS credentials
+
+#### 2. Insufficient Permissions  
+**Error**: `AccessDenied` or `UnauthorizedOperation`  
+**Solution**: Ensure your AWS user has the required IAM permissions listed above
+
+#### 3. Region Mismatch  
+**Error**: Resources not found or deployment fails  
+**Solution**: Ensure AWS CLI is configured for `ap-southeast-2` region
+
+#### 4. Docker Not Running  
+**Error**: `Cannot connect to the Docker daemon`  
+**Solution**: Start Docker Desktop or Docker service
+
+#### 5. Port/Network Issues  
+**Error**: Cannot reach deployed endpoints  
+**Solution**: Check if endpoints return HTTP 200 status, wait 2-3 minutes after deployment
 
 ## 📁 Project Structure
 ```
@@ -123,7 +190,5 @@ npm run test-lambda       # Test Lambda function
 **Author**: Tarun Kumar Manoharan  
 **Region**: ap-southeast-2 (Sydney)  
 **Architecture**: Serverless Web Application  
-
-Simple, cost-effective, and production-ready! 🚀
 
 

@@ -44,4 +44,14 @@ logs/
 # Archive files
 *.zip
 *.tar.gz
-*.tgz 
+*.tgz
+
+# Sensitive configuration
+*.tfvars
+*.tfvars.json
+
+# AWS credentials  
+.aws/
+
+# Environment files
+.env* 
