@@ -189,6 +189,7 @@ npm run test-lambda       # Test Lambda function
 
 **Author**: Tarun Kumar Manoharan  
 **Region**: ap-southeast-2 (Sydney)  
-**Architecture**: Serverless Web Application  
+**Architecture**: Serverless Web Application
+  
 
 
