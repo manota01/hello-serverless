@@ -6,7 +6,7 @@ resource "aws_apigatewayv2_api" "main" {
 
   cors_configuration {
     allow_methods = ["GET", "OPTIONS"]
-    allow_origins = ["*"]
+    allow_origins = var.cors_allowed_origins
   }
 
   tags = merge(var.common_tags, {

@@ -1,15 +1,46 @@
 {
   "name": "hellohexa-devops-test",
   "version": "1.0.0",
-  "description": "Simple serverless web application for DevOps test",
+  "description": "HelloHexa DevOps Test - Serverless Web Application",
   "main": "src/lambda.js",
   "scripts": {
-    "test": "node test/lambda-test.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/ test/",
+    "lint:fix": "eslint src/ test/ --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "deploy": "./scripts/deploy-docker.sh",
     "destroy": "./scripts/destroy-docker.sh",
     "docker:shell": "docker-compose run --rm devops bash"
   },
-  "keywords": ["devops", "serverless", "aws", "lambda"],
-  "author": "Tarun Kumar Manoharan",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.1.0",
+    "@eslint/js": "^9.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/test/**/*.test.js"
+    ],
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda",
+    "terraform",
+    "devops"
+  ],
+  "author": "HelloHexa DevOps Team",
   "license": "MIT"
-} 
+}
