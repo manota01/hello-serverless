@@ -7,15 +7,39 @@ variable "aws_region" {
 variable "project_name" {
   description = "Name of the project"
   type        = string
-  default     = "hellohexa"
+  default     = "hellohexa-devops-test"
+}
+
+variable "environment" {
+  description = "Environment name"
+  type        = string
+  default     = "dev"
 }
 
 variable "common_tags" {
-  description = "Common tags for all resources"
+  description = "Common tags to apply to all resources"
   type        = map(string)
   default = {
     Project     = "HelloHexa DevOps Test"
     Environment = "dev"
-    ManagedBy   = "Terraform"
+    Terraform   = "true"
   }
+}
+
+variable "cors_allowed_origins" {
+  description = "List of allowed origins for CORS"
+  type        = list(string)
+  default     = ["*"]
+}
+
+variable "app_version" {
+  description = "Application version"
+  type        = string
+  default     = "1.1.0"
+}
+
+variable "rate_limit" {
+  description = "Rate limit for the API"
+  type        = string
+  default     = "100 req/s"
 } 

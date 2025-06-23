@@ -6,7 +6,7 @@ services:
     container_name: hellohexa-devops
     volumes:
       - .:/workspace
-      - ~/.aws:/root/.aws:ro  # Mount AWS credentials (read-only)
+      - ~/.aws:/root/.aws:ro # Mount AWS credentials (read-only)
     environment:
       - AWS_REGION=${AWS_REGION:-ap-southeast-2}
       - AWS_PROFILE=${AWS_PROFILE:-default}
@@ -19,4 +19,4 @@ services:
 
 networks:
   devops-network:
-    driver: bridge 
+    driver: bridge
