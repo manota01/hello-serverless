@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "project_name" {
   description = "Name of the project"
   type        = string
-  default     = "hellohexa-devops-test"
+  default     = "helloserverless-devops-test"
 }
 
 variable "environment" {
@@ -20,7 +20,7 @@ variable "common_tags" {
   description = "Common tags to apply to all resources"
   type        = map(string)
   default = {
-    Project     = "HelloHexa DevOps Test"
+    Project     = "HelloServerless DevOps Test"
     Environment = "dev"
     Terraform   = "true"
   }

@@ -14,7 +14,7 @@ terraform {
   # Uncomment and configure for production deployment
   # backend "s3" {
   #   bucket = "your-terraform-state-bucket"
-  #   key    = "hellohexa-serverless/terraform.tfstate"
+  #   key    = "helloserverless-serverless/terraform.tfstate"
   #   region = "us-east-1"
   # }
 }

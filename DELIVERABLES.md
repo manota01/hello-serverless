@@ -1,4 +1,4 @@
-# HelloHexa DevOps Test - Deliverables Summary
+# HelloServerless DevOps Test - Deliverables Summary
 
 ## 🎯 Requirements Met
 
@@ -80,7 +80,7 @@ curl https://snp07vtku6.execute-api.ap-southeast-2.amazonaws.com/
 
 ```bash
 git clone <repository-url>
-cd hellohexa/terraform
+cd hello-serverless/terraform
 terraform init
 terraform apply
 ```
