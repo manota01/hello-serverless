@@ -2,7 +2,7 @@
 
 set -e
 
-echo "HelloHexa DevOps Test - Docker Deployment"
+echo "HelloServerless DevOps Test - Docker Deployment"
 echo "============================================="
 
 # Check if AWS credentials are configured

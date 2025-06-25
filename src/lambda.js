@@ -1,4 +1,4 @@
-// AWS Lambda handler for HelloHexa DevOps Test
+// AWS Lambda handler for HelloServerless DevOps Test
 // Refactored for better maintainability and error handling
 
 // Configuration from environment variables
@@ -56,7 +56,7 @@ const handleHealth = () => {
 const handleRoot = () => {
   console.log('Processing / request');
   return createResponse(200, {
-    message: 'Hello Hexaware DevOps Test - Secured Serverless Edition',
+    message: 'Hello Serverless DevOps Test - Secured Serverless Edition',
     endpoints: {
       '/hello': 'Public - Returns OK as per requirements',
       '/health': 'Public - Health check',

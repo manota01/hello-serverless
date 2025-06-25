@@ -2,7 +2,7 @@
 
 set -e
 
-echo "🗑️  HelloHexa DevOps Test - Docker Cleanup"
+echo "🗑️  HelloServerless DevOps Test - Docker Cleanup"
 echo "=========================================="
 
 # Check if AWS credentials are configured

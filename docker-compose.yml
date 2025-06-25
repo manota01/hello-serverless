@@ -3,7 +3,7 @@ version: '3.8'
 services:
   devops:
     build: .
-    container_name: hellohexa-devops
+    container_name: helloserverless-devops
     volumes:
       - .:/workspace
       - ~/.aws:/root/.aws:ro # Mount AWS credentials (read-only)

@@ -1,7 +1,7 @@
 {
-  "name": "hellohexa-devops-test",
+  "name": "helloserverless-devops-test",
   "version": "1.0.0",
-  "description": "HelloHexa DevOps Test - Serverless Web Application",
+  "description": "HelloServerless DevOps Test - Serverless Web Application",
   "main": "src/lambda.js",
   "scripts": {
     "test": "jest",
@@ -41,6 +41,6 @@
     "terraform",
     "devops"
   ],
-  "author": "HelloHexa DevOps Team",
+  "author": "HelloServerless DevOps Team",
   "license": "MIT"
 }
