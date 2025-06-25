@@ -4,6 +4,10 @@
 
 **Total Monthly Cost: $1.11 USD** for 1 million requests per month in ap-southeast-2 (Sydney).
 
+## AWS Cost Calculator
+
+https://calculator.aws/#/addService
+
 ## Cost Breakdown
 
 | Service         | Component          | Monthly Cost | Details                      |
@@ -58,4 +62,4 @@
 
 ---
 
-_Pricing based on ap-southeast-2 region, updated December 2024_
+
