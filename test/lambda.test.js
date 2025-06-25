@@ -69,7 +69,7 @@ describe('Lambda Function Tests', () => {
       const body = JSON.parse(response.body);
 
       expect(response.statusCode).toBe(200);
-      expect(body.message).toContain('Hello Hexaware DevOps Test');
+      expect(body.message).toContain('Hello Serverless DevOps Test');
       expect(body).toHaveProperty('endpoints');
       expect(body).toHaveProperty('timestamp');
       expect(body).toHaveProperty('architecture');
@@ -121,7 +121,7 @@ describe('Lambda Function Tests', () => {
       const body = JSON.parse(response.body);
 
       expect(response.statusCode).toBe(200);
-      expect(body.message).toContain('Hello Hexaware DevOps Test');
+      expect(body.message).toContain('Hello Serverless DevOps Test');
     });
 
     test('should handle OPTIONS requests', async () => {

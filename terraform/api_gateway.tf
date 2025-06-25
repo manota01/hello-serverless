@@ -2,7 +2,7 @@
 resource "aws_apigatewayv2_api" "main" {
   name          = "${local.name_prefix}-api"
   protocol_type = "HTTP"
-  description   = "HelloHexa DevOps Test API"
+  description   = "HelloServerless DevOps Test API"
 
   cors_configuration {
     allow_methods = ["GET", "OPTIONS"]

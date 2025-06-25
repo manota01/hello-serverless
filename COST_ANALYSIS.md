@@ -1,4 +1,4 @@
-# Cost Analysis - HelloHexa DevOps Test
+# Cost Analysis - HelloServerless DevOps Test
 
 ## Summary
 

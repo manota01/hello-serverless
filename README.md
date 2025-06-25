@@ -1,4 +1,4 @@
-# HelloHexa DevOps Test - Serverless Web Application
+# HelloServerless DevOps Test - Serverless Web Application
 
 A production-ready serverless web application built with AWS Lambda, API Gateway, and Terraform. This project demonstrates DevOps best practices including Infrastructure as Code, automated testing, code quality tools, and containerized deployment.
 
@@ -32,7 +32,7 @@ A production-ready serverless web application built with AWS Lambda, API Gateway
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd hellohexa
+cd hello-serverless
 
 # Install dependencies
 npm install
@@ -208,7 +208,7 @@ app_version = "2.0.0"
 View Lambda logs:
 
 ```bash
-aws logs tail /aws/lambda/hellohexa-dev-app --follow
+aws logs tail /aws/lambda/helloserverless-dev-app --follow
 ```
 
 ## 🏭 Production Readiness Considerations
@@ -410,7 +410,7 @@ graph TD
 
    ```bash
    git clone <repository-url>
-   cd hellohexa
+   cd hello-serverless
    ```
 
 2. **Configure AWS Credentials** (one-time setup):
