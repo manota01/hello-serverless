@@ -47,4 +47,29 @@ resource "aws_apigatewayv2_stage" "main" {
   tags = merge(var.common_tags, {
     Name = "${local.name_prefix}-api-stage"
   })
-} 
+}
+
+# Optional custom domain for the API Gateway
+resource "aws_apigatewayv2_domain_name" "custom" {
+  count = var.api_domain_name != "" && var.api_domain_certificate_arn != "" ? 1 : 0
+
+  domain_name = var.api_domain_name
+
+  domain_name_configuration {
+    certificate_arn = var.api_domain_certificate_arn
+    endpoint_type   = "REGIONAL"
+    security_policy = "TLS_1_2"
+  }
+
+  tags = merge(var.common_tags, {
+    Name = "${local.name_prefix}-api-domain"
+  })
+}
+
+# Map the custom domain to the default stage
+resource "aws_apigatewayv2_api_mapping" "custom" {
+  count       = var.api_domain_name != "" && var.api_domain_certificate_arn != "" ? 1 : 0
+  api_id      = aws_apigatewayv2_api.main.id
+  domain_name = aws_apigatewayv2_domain_name.custom[0].id
+  stage       = aws_apigatewayv2_stage.main.id
+}

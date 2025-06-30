@@ -61,5 +61,3 @@ https://calculator.aws/#/addService
 - Current implementation optimal for most web applications
 
 ---
-
-
