@@ -164,6 +164,8 @@ project_name = "my-project"
 environment = "production"
 cors_allowed_origins = ["https://mydomain.com"]
 app_version = "2.0.0"
+api_domain_name = "api.mydomain.com"            # optional
+api_domain_certificate_arn = "arn:aws:acm:region:acct:certificate/123456"  # required if using custom domain
 ```
 
 ## 📊 Monitoring
@@ -213,7 +215,7 @@ aws logs tail /aws/lambda/helloserverless-dev-app --follow
 
 ## 🏭 Production Readiness Considerations
 
-While this project  is production-ready for many use cases, here are additional enhancements recommended for enterprise production environments:
+While this project is production-ready for many use cases, here are additional enhancements recommended for enterprise production environments:
 
 ### 🔒 Security & Compliance
 
@@ -287,17 +289,20 @@ stages:
 ### 🎯 Implementation Priority
 
 **Phase 1 (Critical):**
+
 - Remote Terraform state
-- Multi-environment setup  
+- Multi-environment setup
 - Basic monitoring and alerting
 - CI/CD pipeline
 
 **Phase 2 (Important):**
+
 - Security enhancements (WAF, secrets management)
 - Advanced monitoring (X-Ray, custom metrics)
 - Performance optimization
 
 **Phase 3 (Advanced):**
+
 - Multi-region deployment
 - Advanced security (VPC, compliance)
 - Comprehensive disaster recovery
@@ -305,6 +310,7 @@ stages:
 ### 💡 Cost Considerations
 
 Production-ready infrastructure typically increases costs by 3-5x due to:
+
 - Multi-environment deployments
 - Enhanced monitoring and logging
 - Security services (WAF, GuardDuty, etc.)
@@ -437,6 +443,8 @@ That's it! The Docker container handles:
 ```bash
 # Get the application URL
 terraform output application_url
+# Or custom domain if configured
+terraform output custom_domain_url
 
 # Test the required endpoint
 curl https://snp07vtku6.execute-api.ap-southeast-2.amazonaws.com/hello

@@ -13,6 +13,11 @@ output "health_endpoint" {
   value       = "${aws_apigatewayv2_api.main.api_endpoint}/health"
 }
 
+output "custom_domain_url" {
+  description = "Custom domain URL for the API Gateway (if configured)"
+  value       = var.api_domain_name != "" ? "https://${var.api_domain_name}" : null
+}
+
 output "application_summary" {
   description = "Application deployment summary"
   value = {

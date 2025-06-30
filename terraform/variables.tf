@@ -42,4 +42,16 @@ variable "rate_limit" {
   description = "Rate limit for the API"
   type        = string
   default     = "100 req/s"
-} 
+}
+
+variable "api_domain_name" {
+  description = "Custom domain name for the API Gateway (optional)"
+  type        = string
+  default     = ""
+}
+
+variable "api_domain_certificate_arn" {
+  description = "ARN of the ACM certificate for the custom domain"
+  type        = string
+  default     = ""
+}
